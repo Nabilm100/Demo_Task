@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| admin Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -14,24 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::prefix("admin")->name('admin.')->group(function () {
+
+   Route::middleware("isAdmin")->group(function () {
+        Route::view('register','admin.register')->name("register");
+        Route::view('login','admin.login')->name("login");
+        Route::view('index','admin.index')->name("index");
+
+   });
+
+    require __DIR__.'/admin_auth.php';
+
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
 
 //Route::view('/admin/register','admin.register');
 //Route::view('/admin/login','admin.login');
 //Route::view('/admin/index','admin.index');
 
-require __DIR__.'/auth.php';
-require __DIR__.'/admin.php';
+
+
