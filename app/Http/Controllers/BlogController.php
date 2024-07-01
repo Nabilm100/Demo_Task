@@ -63,12 +63,19 @@ public function show(Blog $blog)
 public function edit(Blog $blog)
 {
     // Authorize and load the view for editing the blog
+    if(request()->user()->id != $blog->user_id){
+        abort(403, 'Unauthorized action.');
+    }
     
     return view('blogs.edit', compact('blog'));
 }
 
 public function update(Request $request, Blog $blog)
 {
+
+    if(request()->user()->id != $blog->user_id){
+        abort(403, 'Unauthorized action.');
+    }
     $validatedData = $request->validate([
         'title' => 'nullable|string|max:255',
         'description' => 'nullable|string',
@@ -76,14 +83,8 @@ public function update(Request $request, Blog $blog)
     ]);
 
     // Update only the fields that are present in the validated data
-    if (isset($validatedData['title'])) {
         $blog->title = $validatedData['title'];
-    }
-
-    if (isset($validatedData['description'])) {
         $blog->description = $validatedData['description'];
-    }
-
     if ($request->hasFile('image')) {
         // Handle image upload
         
@@ -101,6 +102,9 @@ public function update(Request $request, Blog $blog)
 
 public function destroy(Blog $blog)
 {
+    if(request()->user()->id != $blog->user_id){
+        abort(403, 'Unauthorized action.');
+    }
     // Delete the blog
     $blog->delete();
 

@@ -11,11 +11,11 @@
             @method('PUT')
             <div class="form-group">
                 <label for="title" class="blog-form-label">Title</label>
-                <input type="text" class="form-control blog-form-input" id="title" name="title" >
+                <input type="text" class="form-control blog-form-input" id="title" name="title" value="{{$blog->title}}">
             </div>
             <div class="form-group">
                 <label for="description" class="blog-form-label">Description</label>
-                <textarea class="form-control blog-form-textarea" id="description" name="description" rows="4" ></textarea>
+                <textarea class="form-control blog-form-textarea" id="description" name="description" rows="4"  >{{$blog->description}}</textarea>
             </div>
             <div class="form-group">
                 <label for="image" class="blog-form-label">Image</label>

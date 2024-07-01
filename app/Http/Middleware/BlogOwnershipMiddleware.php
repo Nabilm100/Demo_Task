@@ -20,18 +20,25 @@ class BlogOwnershipMiddleware
     public function handle(Request $request, Closure $next)
     {
         $blogId = $request->route('blog'); // Assuming the route parameter is 'blog'
-        Log::info('Blog ID from route parameter: ' . $blogId);
+       // Log::info('Blog ID from route parameter: ' . $blogId);
         //echo($blogId);
 
         // Fetch the blog post from database
-        $blog = Blog::findOrFail($blogId);
+        $blog = Blog::find($blogId);
+       // dd($blog);
 
         // Check if the authenticated user is the owner of the blog post
-        if ($request->user()->id !== $blog->user_id) {
-            abort(403, 'Unauthorized action.');
+      /*  if ($request->user()->id !== $blog->user_id) {
+            return redirect()->to('/blogs');
+        }*/
+
+
+        if(auth()->id() === $blog->user_id) {
+            return $next($request);
+
         }
         
-
-        return $next($request);
+        return redirect()->to('/');
+       // return $next($request);
     }
 }
