@@ -10,6 +10,9 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    const STATUS_PENDING = 0;
+    const STATUS_APPROVED = 1;
+    const STATUS_REJECTED = -1;
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -21,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'status',
     ];
 
     /**
@@ -41,4 +45,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     // Define methods for approval status (optional)
+     public function isPendingApproval()
+     {
+         return $this->status === 0;
+     }
+ 
+     public function isApproved()
+     {
+         return $this->status === 1;
+     }
+ 
+     public function isRejected()
+     {
+         return $this->status === -1;
+     }
 }

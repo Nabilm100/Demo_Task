@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','approvedUser'])->group(function () {
   
 
 //------------comment----------------------

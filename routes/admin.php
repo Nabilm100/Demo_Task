@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\Admin\UserController;
 
 
 Route::prefix("admin")->name('admin.')->group(function () {
@@ -22,15 +23,23 @@ Route::prefix("admin")->name('admin.')->group(function () {
         Route::view('login','admin.login')->name("login");
         Route::view('index','admin.index')->name("index");
 
+        //show pending users
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+        // Approve a user
+        Route::post('/users/{user}/approve', [UserController::class, 'approve'])->name('users.approve');
+    
+        // Reject a user
+        Route::post('/users/{user}/reject', [UserController::class, 'reject'])->name('users.reject');
+
+
    });
 
     require __DIR__.'/admin_auth.php';
 
 });
 
-//Route::view('/admin/register','admin.register');
-//Route::view('/admin/login','admin.login');
-//Route::view('/admin/index','admin.index');
+
 
 
 

@@ -1,0 +1,90 @@
+/* styles.css */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.empty-message {
+    color: #666;
+}
+
+.user-table {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.user-header {
+    display: flex;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+}
+
+.user-column {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.user-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-row {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+}
+
+.user-column span {
+    font-weight: bold;
+}
+
+.action-form {
+    margin-left: 10px;
+    
+}
+
+.action-button {
+    cursor: pointer;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.approve-button {
+    background-color: #4CAF50;
+    color: #fff;
+    margin: 10px;
+}
+
+.approve-button:hover {
+    background-color: #45a049;
+}
+
+.reject-button {
+    background-color: #f44336;
+    color: #fff;
+    margin: 10px;
+}
+
+.reject-button:hover {
+    background-color: #da190b;
+}

@@ -66,6 +66,7 @@ class Kernel extends HttpKernel
         'isAdmin' => \App\Http\Middleware\isAdmin::class,
         'blog.owner' => \App\Http\Middleware\BlogOwnershipMiddleware::class,
         'comment.owner' => \App\Http\Middleware\CommentOwnershipMiddleware::class,
+        'approvedUser' => \App\Http\Middleware\ApprovedMiddleware::class,
         
     ];
 

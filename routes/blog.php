@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','approvedUser'])->group(function () {
   
 //-------------blog-----------------------
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs.index');

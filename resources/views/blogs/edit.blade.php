@@ -21,6 +21,11 @@
                 <label for="image" class="blog-form-label">Image</label>
                 <input type="file" class="form-control-file blog-form-file" id="image" name="image" accept="image/*" >
             </div>
+            <div>
+                @if($blog->image)
+                    <img src="{{ asset('images/'. $blog->image) }}" class="img-edit" alt="{{ $blog->title }}">
+                @endif
+            </div>
             <button type="submit" class="btn btn-primary blog-form-button">Create Blog Post</button>
             
         </form>

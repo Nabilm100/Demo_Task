@@ -53,6 +53,7 @@
         <p>You are logged in as an admin.</p>
         
         <!-- Logout dropdown -->
+        <a> <a href="{{ route('admin.users.index') }}" class="btn btn-outline-danger my-2 my-sm-0">show pending users</a></a>
       
             <!-- Logout form -->
             <form class="form-inline my-2 my-lg-0" method="POST" action="{{ route('admin.logout') }}">

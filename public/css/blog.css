@@ -227,5 +227,14 @@
     color: white;
 }
 
+.img-edit{
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    width: 30%;
+    height: 300px;
+    margin: 20px;
+
+}
+
 
 
